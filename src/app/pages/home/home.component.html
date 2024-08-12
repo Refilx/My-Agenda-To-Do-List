@@ -1,0 +1,73 @@
+<h1 class="p-3 text-center">Seja bem-vindo ao To Do List!</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-container">
+      <h1>Adicionar Tarefa</h1>
+      <form (ngSubmit)="handleSubmit()">
+        <fieldset>
+          <label for="titulo">Título da Tarefa:</label>
+          <input name="titulo" [(ngModel)]="taskRegistrationObj.titulo" type="text" id="titulo" required>
+        </fieldset>
+        <fieldset>
+          <label for="descricao">Descrição:</label>
+          <input name="descricao" [(ngModel)]="taskRegistrationObj.descricao" type="text" id="descricao">
+        </fieldset>
+        <fieldset>
+          <label for="data">Data:</label>
+          <input name="data" [(ngModel)]="taskRegistrationObj.data" type="date" id="data">
+        </fieldset>
+        <fieldset>
+          <label for="hora">Hora:</label>
+          <input name="hora" [(ngModel)]="taskRegistrationObj.hora" type="time" id="hora">
+        </fieldset>
+        <fieldset>
+          <label for="prioridade">Prioridade:</label>
+          <select name="prioridade" [(ngModel)]="taskRegistrationObj.prioridade" id="prioridade">
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+          </select>
+        </fieldset>
+        <button type="submit">Salvar Tarefa</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="list-container">
+      <h2>Lista de Tarefas</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Prioridade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--@for (task of tasks; track $index) {             (change)="toggleCompletion(i)-->
+          <tr *ngFor="let task of tasks; let i = index">
+            <td>
+              <input type="checkbox" [(ngModel)]="task.completed">
+            </td>
+            <td [class.completed]="task.completed">{{ task.titulo }}</td>
+            <td [class.completed]="task.completed">{{ task.descricao }}</td>
+            <td [class.completed]="task.completed">{{ task.data }}</td>
+            <td [class.completed]="task.completed">{{ task.hora }}</td>
+            <td [class.completed]="task.completed">{{ task.prioridade }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="editTask(i)">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteTask(i)">Excluir</button>
+            </td>
+          </tr>
+        <!--}-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

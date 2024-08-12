@@ -1,0 +1,68 @@
+
+<div class="container d-flex justify-content-center">
+
+  <div class="col-4">
+      <div class="card shadow round mt-5">
+
+
+          @if(loginVisible) {
+            <div class="card-header">
+              <h3 class="text-center">Pagina de Log in</h3>
+            </div>
+
+            <div class="card-body">
+              <form >
+                  <div class="mb-3">
+                      <label for="" class="form-label">Username</label>
+                      <input name="username" [(ngModel)]="userLogin.username" type="text" class="form-control">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input name="password" [(ngModel)]="userLogin.password" type="password" class="form-control">
+                </div>
+                <p>Não tem conta ainda? <a class="link-info" (click)="loginVisible = false">Registre-se aqui!</a></p>
+
+                <button type="button" class="btn btn-primary" (click)="onLogin()">
+                    Entrar
+                </button>
+              </form>
+
+          </div>
+          } @else {
+            <div class="card-header">
+              <h3 class="text-center">Registre-se</h3>
+            </div>
+            <div class="card-body">
+              <form >
+
+                <div class="mb-3">
+                  <label for="" class="form-label">Email</label>
+                  <input name="email" [(ngModel)]="userRegistrationObj.email" type="email" class="form-control">
+                </div>
+
+                  <div class="mb-3">
+                      <label for="" class="form-label">Username</label>
+                      <input name="username" [(ngModel)]="userRegistrationObj.username" type="text" class="form-control">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input name="password" [(ngModel)]="userRegistrationObj.password" type="password" class="form-control">
+                </div>
+                <p>Já possui conta? <a class="link-info" (click)="loginVisible = true">Faça seu log in aqui!</a></p>
+
+                <button type="button" class="btn btn-primary" (click)="onRegister()">
+                    Registrar
+                </button>
+              </form>
+
+          </div>
+          }
+
+
+      </div>
+  </div>
+
+</div>
+
