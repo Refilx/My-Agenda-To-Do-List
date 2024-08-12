@@ -25,6 +25,21 @@ export class LoginComponent  {
       password: ''
     }
 
+    resetRegisterForm(): void {
+      this.userRegistrationObj = {
+        email: '',
+        username: '',
+        password: '',
+      };
+    }
+
+    resetLoginForm(): void {
+      this.userRegistrationObj = {
+        username: '',
+        password: '',
+      };
+    }
+
     router = inject(Router)
 
     onRegister(){
@@ -43,7 +58,7 @@ export class LoginComponent  {
         localStorage.setItem("angular18local", JSON.stringify(localArrayDeLogs));
       }
 
-
+      this.resetRegisterForm();
       alert("Registro realizado com sucesso!")
     }
 
@@ -67,5 +82,6 @@ export class LoginComponent  {
       else {
         alert("Usuário não encontrado!");
       }
+      this.resetLoginForm();
     }
 }
